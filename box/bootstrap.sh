@@ -10,8 +10,10 @@ apt-get -y autoremove
 
 anaconda2="/vagrant/Anaconda2-2.5.0-Linux-x86_64.sh"
 anaconda2url="https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda2-2.5.0-Linux-x86_64.sh"
+anaconda2prefix="/home/vagrant/anaconda2"
 anaconda3="/vagrant/Anaconda3-2.5.0-Linux-x86_64.sh"
 anaconda3url="https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.cf1.rackcdn.com/Anaconda3-2.5.0-Linux-x86_64.sh"
+anaconda3prefix="/home/vagrant/anaconda3"
 
 if [ ! -e ${anaconda2} ]
 then
@@ -19,9 +21,10 @@ then
   try curl --silent ${anaconda2url} -o ${anaconda2}
   stat "${anaconda2}"
 fi
-/usr/bin/env bash ${anaconda2} -b -p "/home/vagrant/anaconda2"
+/usr/bin/env bash ${anaconda2} -b -p "${anaconda2prefix}"
 
-echo "PATH=\"/home/vagrant/anaconda2/bin:\$PATH\"" >>/home/vagrant/.bashrc
+echo "PATH=\"${anaconda2prefix}/bin:\$PATH\"" >>/home/vagrant/.bashrc
+chown -R vagrant:vagrant "${anaconda2prefix}"
 
 #if [ ! -e ${anaconda3} ]
 #then
@@ -29,7 +32,8 @@ echo "PATH=\"/home/vagrant/anaconda2/bin:\$PATH\"" >>/home/vagrant/.bashrc
 #  try curl --silent ${anaconda3url} -o ${anaconda3}
 #  stat "${anaconda3}"
 #fi
-#/usr/bin/env bash ${anaconda3} -b -p "/home/vagrant/anaconda3"
-#echo PATH=\"/home/vagrant/anaconda3/bin:\$PATH\"" >>/home/vagrant/.bashrc
+#/usr/bin/env bash ${anaconda3} -b -p "${anaconda3prefix}"
+#echo PATH=\"${anaconda3prefix}/bin:\$PATH\"" >>/home/vagrant/.bashrc
+#chown -R vagrant:vagrant "${anaconda3prefix}"
 
 true
