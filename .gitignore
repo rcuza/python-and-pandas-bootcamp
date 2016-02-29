@@ -1,3 +1,4 @@
 *.pyc
 .vagrant
-
+Anaconda*.sh
+box/anaconda2/
