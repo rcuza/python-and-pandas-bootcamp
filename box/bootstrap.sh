@@ -15,17 +15,21 @@ anaconda3url="https://3230d63b5fc54e62148e-c95ac804525aac4b6dba79b00b39d1d3.ssl.
 
 if [ ! -e ${anaconda2} ]
 then
-  try curl ${anaconda2url} -o ${anaconda2}
+  echo "Downloading Anaconda2 script"
+  try curl --silent ${anaconda2url} -o ${anaconda2}
+  stat "${anaconda2}"
 fi
-${anaconda2} -b -p "/home/vagrant/anaconda2"
+/usr/bin/env bash ${anaconda2} -b -p "/home/vagrant/anaconda2"
 
 echo "PATH=\"/home/vagrant/anaconda2/bin:\$PATH\"" >>/home/vagrant/.bashrc
 
 #if [ ! -e ${anaconda3} ]
 #then
-#  try curl ${anaconda3url} -o ${anaconda3}
+#  echo "Downloading Anaconda3 script"
+#  try curl --silent ${anaconda3url} -o ${anaconda3}
+#  stat "${anaconda3}"
 #fi
-#${anaconda3} -b -p "/home/vagrant/anaconda3"
+#/usr/bin/env bash ${anaconda3} -b -p "/home/vagrant/anaconda3"
 #echo PATH=\"/home/vagrant/anaconda3/bin:\$PATH\"" >>/home/vagrant/.bashrc
 
 true
