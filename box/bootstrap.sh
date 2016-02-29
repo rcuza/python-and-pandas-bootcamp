@@ -17,15 +17,15 @@ if [ ! -e ${anaconda2} ]
 then
   try curl ${anaconda2url} -o ${anaconda2}
 fi
-${anaconda2} -b -p "/vagrant/anaconda2"
+${anaconda2} -b -p "/home/vagrant/anaconda2"
 
-echo "PATH=\"/vagrant/anaconda2/bin:\$PATH\"" >>/home/vagrant/.bashrc
+echo "PATH=\"/home/vagrant/anaconda2/bin:\$PATH\"" >>/home/vagrant/.bashrc
 
 #if [ ! -e ${anaconda3} ]
 #then
 #  try curl ${anaconda3url} -o ${anaconda3}
 #fi
-#${anaconda3} -b -p "/vagrant/anaconda3"
-#echo PATH=\"/vagrant/anaconda3/bin:\$PATH\"" >>/home/vagrant/.bashrc
+#${anaconda3} -b -p "/home/vagrant/anaconda3"
+#echo PATH=\"/home/vagrant/anaconda3/bin:\$PATH\"" >>/home/vagrant/.bashrc
 
 true
